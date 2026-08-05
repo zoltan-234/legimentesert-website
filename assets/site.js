@@ -19,7 +19,17 @@ const header=document.querySelector('header'),aside=header?.querySelector('aside
 // Copy controls
 q('button').forEach(b=>{const label=b.getAttribute('aria-label')||'';if(/másol|copy/i.test(label)){b.addEventListener('click',async()=>{const row=b.closest('div.grid')||b.parentElement;const value=row?.querySelector('code')?.textContent?.trim();if(!value)return;try{await navigator.clipboard.writeText(value)}catch{const t=document.createElement('textarea');t.value=value;document.body.append(t);t.select();document.execCommand('copy');t.remove()}const n=document.createElement('div');n.dataset.staticToast='';n.textContent='Másolva!';document.body.append(n);setTimeout(()=>n.remove(),1500)})}});
 // Accordion-like controls
-q('button[aria-expanded]').forEach(b=>b.addEventListener('click',()=>{const state=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!state));const item=b.closest('[data-state]')||b.parentElement;const content=item?.querySelector('[role="region"], [data-radix-collection-item] + div');if(content)content.hidden=state;}));
+q('button[aria-expanded]').forEach(b=>b.addEventListener('click',()=>{
+  const wasOpen=b.getAttribute('aria-expanded')==='true';
+  const next=!wasOpen;
+  b.setAttribute('aria-expanded',String(next));
+  if('state'in b.dataset)b.dataset.state=next?'open':'closed';
+  const content=b.id?document.querySelector('[aria-labelledby="'+b.id+'"]'):null;
+  if(content){
+    content.hidden=!next;
+    if('state'in content.dataset)content.dataset.state=next?'open':'closed';
+  }
+}));
 // News search and category filters
 const news=document.querySelector('input[placeholder*="Keres"]');if(news){const cards=q('article');const buttons=q('[role="group"] button');let category='all';const apply=()=>{const term=news.value.toLocaleLowerCase('hu-HU');cards.forEach(c=>{const okText=c.textContent.toLocaleLowerCase('hu-HU').includes(term);const okCat=category==='all'||c.textContent.includes(category);c.classList.toggle('static-hidden',!(okText&&okCat))})};news.addEventListener('input',apply);buttons.forEach((b,i)=>b.addEventListener('click',()=>{category=i===0?'all':b.textContent.trim();buttons.forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');apply()}));}
 // Generic tabs (helicopter explorer)
