@@ -1,0 +1,33 @@
+{
+  "routes": [
+    "/",
+    "/legimentes",
+    "/legimentes/bazisaink",
+    "/alapitvanyunkrol/rolunk",
+    "/alapitvanyunkrol/atlathatosag",
+    "/alapitvanyunkrol/tamogatoink",
+    "/alapitvanyunkrol/dokumentumok",
+    "/kapcsolat",
+    "/tamogatas",
+    "/adomanyozas",
+    "/tamogatas/maganszemelyeknek",
+    "/tamogatas/cegeknek",
+    "/tamogatas/ado-1-szazalek",
+    "/tamogatas/onkentes",
+    "/hireink",
+    "/hireink/jubileumi-veradas-2025",
+    "/hireink/uj-mentestechnikai-eszkozok",
+    "/hireink/hirlevel-2025-osz",
+    "/hireink/adj-vert-kampany",
+    "/hireink/csaladi-nap-budaors",
+    "/hireink/nyari-hirlevel",
+    "/hireink/ado-egy-szazalek-kampany",
+    "/hireink/szimulacios-kepzes",
+    "/hireink/tavaszi-hirlevel",
+    "/hireink/iskolai-elsosegely-program",
+    "/hireink/mentesiranyitasi-nyilt-nap",
+    "/hireink/debreceni-bazis-fejlesztes"
+  ],
+  "page_count": 27,
+  "media_files": 5
+}
